@@ -6,12 +6,26 @@ Sample code for [Udemy course - The Complete Elixir and Phoenix Bootcamp](https:
 
 ### Windows
 
+1. Install [Chocolatey](https://chocolatey.org/install)
+
 ```
 @"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
+```
+
+2. Install elixir 
+
+```
 choco install -y elixir
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/identicon](https://hexdocs.pm/identicon).
+## Running the app
 
+```
+cd <project>
+mix deps.get
+iex -S mix
+
+iex> Identicon.main "Your String"
+```
+
+Generate identicons in the images folder.
