@@ -2,6 +2,8 @@
 
 Sample code for [Udemy course - The Complete Elixir and Phoenix Bootcamp](https://www.udemy.com/the-complete-elixir-and-phoenix-bootcamp-and-tutorial/learn/v4/content)
 
+Work covers loosely section 6 of the course. Code generates simple identicons given a string input, similar to the ones used by GitHub when a user does not upload an image.
+
 ## Installation
 
 ### Windows
