@@ -1,16 +1,9 @@
 defmodule Identicon do
-  @moduledoc """
-  Documentation for Identicon. A library that generates Indenticons, just like GitHub uses.
-  """
 
-  @doc """
-  Main entry into identicon generator. Simply pass a string and recieve a unique identicon.
+  def hello() do
+    :world
+  end
 
-  ## Examples
-
-      iex> Identicon.main("Charles")
-
-  """
   def main(input) do
     input
     |> hash_input
@@ -34,7 +27,7 @@ defmodule Identicon do
   end
 
   def build_grid(%Identicon.Image{hex: hex} = image) do
-    grid = 
+    grid =
       hex
       |> Enum.chunk_every(3, 3, :discard)
       |> Enum.map(&mirror_row/1)
@@ -49,15 +42,15 @@ defmodule Identicon do
   end
 
   def filter_odd_squares(%Identicon.Image{grid: grid} = image) do
-    grid = Enum.filter grid, fn({code, _index}) -> 
+    grid = Enum.filter grid, fn({code, _index}) ->
       rem(code, 2) == 0
     end
 
     %Identicon.Image{ image | grid: grid}
   end
-  
+
   def build_pixel_map(%Identicon.Image{grid: grid} = image) do
-    pixel_map = 
+    pixel_map =
       Enum.map grid, fn({_code, index}) ->
         horizontal = rem(index, 5) * 50
         vertical = div(index, 5) * 50
@@ -77,7 +70,7 @@ defmodule Identicon do
     Enum.each pixel_map, fn({start, stop}) ->
       :egd.filledRectangle(image, start, stop, fill)
     end
-  
+
     :egd.render(image)
   end
 
